@@ -22,7 +22,7 @@
     });
 
 
-    // HOME SLIDER & COURSES & CLIENTS
+    // HOME SLIDER & bookS & CLIENTS
     $('.home-slider').owlCarousel({
       animateOut: 'fadeOut',
       items:1,
@@ -33,7 +33,7 @@
       smartSpeed: 1000,
     })
 
-    $('.owl-courses').owlCarousel({
+    $('.owl-books').owlCarousel({
       animateOut: 'fadeOut',
       loop: true,
       autoplayHoverPause: false,

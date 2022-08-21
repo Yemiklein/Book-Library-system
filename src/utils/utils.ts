@@ -1,13 +1,13 @@
 import Joi from "joi";
 import jwt from "jsonwebtoken";
-export const createCourseSchema = Joi.object().keys({
+export const createbookSchema = Joi.object().keys({
   title: Joi.string().lowercase().required(),
   description: Joi.string().lowercase().required(),
   image: Joi.string().required(),
   price: Joi.number().required(),
 });
 
-export const updateCourseSchema = Joi.object().keys({
+export const updatebookSchema = Joi.object().keys({
   title: Joi.string().lowercase(),
   description: Joi.string().lowercase(),
   image: Joi.string().required(),

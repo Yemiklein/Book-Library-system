@@ -1,14 +1,14 @@
 import { Request, Response, NextFunction } from "express";
 import { v4 as uuidv4 } from "uuid";
-import { CourseInstance } from "../model/course";
+import { bookInstance } from "../model/book";
 import { UserInstance } from "../model/user";
 import {
-  createCourseSchema,
+  createbookSchema,
   options,
-  updateCourseSchema,
+  updatebookSchema,
 } from "../utils/utils";
 
-export async function createCourse(
+export async function createbook(
   req: Request | any,
   res: Response,
   next: NextFunction
@@ -16,13 +16,13 @@ export async function createCourse(
   const id = uuidv4();
   try {
     const verified = req.user;
-    const validationResult = createCourseSchema.validate(req.body, options);
+    const validationResult = createbookSchema.validate(req.body, options);
     if (validationResult.error) {
       return res.status(400).json({
         Error: validationResult.error.details[0].message,
       });
     }
-    const record = await CourseInstance.create({
+    const record = await bookInstance.create({
       id,
       ...req.body,
       userId: verified.id,
@@ -37,7 +37,7 @@ export async function createCourse(
   }
 }
 
-export async function getCourse(
+export async function getbook(
   req: Request,
   res: Response,
   next: NextFunction
@@ -45,7 +45,7 @@ export async function getCourse(
   try {
     const limit = req.query?.limit as number | undefined;
     const offset = req.query?.offset as number | undefined;
-    const record = await CourseInstance.findAll({
+    const record = await bookInstance.findAll({
       limit,
       offset,
       include: [
@@ -72,42 +72,42 @@ export async function getCourse(
   }
 }
 
-export async function getSingleCourse(
+export async function getSinglebook(
   req: Request,
   res: Response,
   next: NextFunction
 ) {
   try {
     const { id } = req.params;
-    const record = await CourseInstance.findOne({ where: { id } });
+    const record = await bookInstance.findOne({ where: { id } });
 
-    res.render("updatecourse", { record });
+    res.render("updatebook", { record });
   } catch (error) {
     res.status(500).json({
-      msg: "failed to read single course",
+      msg: "failed to read single book",
       route: "/read/:id",
     });
   }
 }
 
-export async function getDeleteSingleCourse(
+export async function getDeleteSinglebook(
   req: Request,
   res: Response,
   next: NextFunction
 ) {
   try {
     const { id } = req.params;
-    const record = await CourseInstance.findOne({ where: { id } });
-    res.render("deletecourse", { record });
+    const record = await bookInstance.findOne({ where: { id } });
+    res.render("deletebook", { record });
   } catch (error) {
     res.status(500).json({
-      msg: "failed to read single course",
+      msg: "failed to read single book",
       route: "/read/:id",
     });
   }
 }
 
-export async function updateCourse(
+export async function updatebook(
   req: Request,
   res: Response,
   next: NextFunction
@@ -115,17 +115,17 @@ export async function updateCourse(
   try {
     const { id } = req.params;
     const { title, description, image, price } = req.body;
-    const validationResult = updateCourseSchema.validate(req.body, options);
+    const validationResult = updatebookSchema.validate(req.body, options);
     if (validationResult.error) {
       return res.status(400).json({
         Error: validationResult.error.details[0].message,
       });
     }
 
-    const record = await CourseInstance.findOne({ where: { id } });
+    const record = await bookInstance.findOne({ where: { id } });
     if (!record) {
       return res.status(404).json({
-        Error: "Cannot find existing course",
+        Error: "Cannot find existing book",
       });
     }
     const updatedrecord = await record.update({
@@ -144,17 +144,17 @@ export async function updateCourse(
   }
 }
 
-export async function deleteCourse(
+export async function deletebook(
   req: Request,
   res: Response,
   next: NextFunction
 ) {
   try {
     const { id } = req.params;
-    const record = await CourseInstance.findOne({ where: { id } });
+    const record = await bookInstance.findOne({ where: { id } });
     if (!record) {
       return res.status(404).json({
-        msg: "Cannot find course",
+        msg: "Cannot find book",
       });
     }
     const deletedRecord = await record.destroy();

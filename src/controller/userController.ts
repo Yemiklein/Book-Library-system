@@ -8,7 +8,7 @@ import {
 } from "../utils/utils";
 import { UserInstance } from "../model/user";
 import bcrypt from "bcryptjs";
-import { CourseInstance } from "../model/course";
+import { bookInstance } from "../model/book";
 
 export async function RegisterUser(
   req: Request,
@@ -75,7 +75,7 @@ export async function LoginUser(
     }
     const record = (await UserInstance.findOne({
       where: { email: req.body.email },
-      include: [{ model: CourseInstance, as: "course" }],
+      include: [{ model: bookInstance, as: "book" }],
     })) as unknown as { [key: string]: string };
 
     const { id } = record;
@@ -107,6 +107,23 @@ export async function LoginUser(
   }
 }
 
+export async function LogoutUser(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  try {
+    res.clearCookie("authorization");
+    res.clearCookie("id");
+    res.render("logoutrefresh");
+  } catch (err) {
+    res.status(500).json({
+      msg: "failed to logout",
+      route: "/logout",
+    });
+  }
+}
+
 export async function defaultView(
   req: Request,
   res: Response,
@@ -116,7 +133,7 @@ export async function defaultView(
     const userId = req.cookies.id;
     const record = (await UserInstance.findOne({
       where: { id: userId },
-      include: [{ model: CourseInstance, as: "course" }],
+      include: [{ model: bookInstance, as: "book" }],
     })) as unknown as { [key: string]: string };
 
     res.render("dashboard", { record });
@@ -141,13 +158,13 @@ export async function getUsers(
       offset,
       include: [
         {
-          model: CourseInstance,
-          as: "course",
+          model: bookInstance,
+          as: "book",
         },
       ],
     });
     res.status(200).json({
-      msg: "You have successfully fetch all courses",
+      msg: "You have successfully fetch all books",
       count: record.count,
       record: record.rows,
     });

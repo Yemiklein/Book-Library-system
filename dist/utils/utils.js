@@ -3,16 +3,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.options = exports.generateToken = exports.loginSchema = exports.registerSchema = exports.updateCourseSchema = exports.createCourseSchema = void 0;
+exports.options = exports.generateToken = exports.loginSchema = exports.registerSchema = exports.updatebookSchema = exports.createbookSchema = void 0;
 const joi_1 = __importDefault(require("joi"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
-exports.createCourseSchema = joi_1.default.object().keys({
+exports.createbookSchema = joi_1.default.object().keys({
     title: joi_1.default.string().lowercase().required(),
     description: joi_1.default.string().lowercase().required(),
     image: joi_1.default.string().required(),
     price: joi_1.default.number().required(),
 });
-exports.updateCourseSchema = joi_1.default.object().keys({
+exports.updatebookSchema = joi_1.default.object().keys({
     title: joi_1.default.string().lowercase(),
     description: joi_1.default.string().lowercase(),
     image: joi_1.default.string().required(),

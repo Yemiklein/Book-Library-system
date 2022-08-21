@@ -1,7 +1,7 @@
 import { DataTypes, Model } from "sequelize";
 import db from "../config/database.config";
 
-interface CourseAttributes {
+interface bookAttributes {
   id: string;
   title: string;
   description: string;
@@ -10,9 +10,9 @@ interface CourseAttributes {
   userId: string;
 }
 
-export class CourseInstance extends Model<CourseAttributes> {}
+export class bookInstance extends Model<bookAttributes> {}
 
-CourseInstance.init(
+bookInstance.init(
   {
     id: {
       type: DataTypes.UUIDV4,
@@ -43,6 +43,6 @@ CourseInstance.init(
   },
   {
     sequelize: db,
-    tableName: "courseTable",
+    tableName: "bookTable",
   }
 );

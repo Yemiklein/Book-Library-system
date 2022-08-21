@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserInstance = void 0;
 const sequelize_1 = require("sequelize");
 const database_config_1 = __importDefault(require("../config/database.config"));
-const course_1 = require("./course");
+const book_1 = require("./book");
 class UserInstance extends sequelize_1.Model {
 }
 exports.UserInstance = UserInstance;
@@ -95,5 +95,5 @@ UserInstance.init({
     sequelize: database_config_1.default,
     tableName: "user",
 });
-UserInstance.hasMany(course_1.CourseInstance, { foreignKey: "userId", as: "course" });
-course_1.CourseInstance.belongsTo(UserInstance, { foreignKey: "userId", as: "user" });
+UserInstance.hasMany(book_1.bookInstance, { foreignKey: "userId", as: "book" });
+book_1.bookInstance.belongsTo(UserInstance, { foreignKey: "userId", as: "user" });

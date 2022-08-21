@@ -7,7 +7,7 @@ import logger from "morgan";
 import db from "./config/database.config";
 
 import userRouter from "./routes/user";
-import courseRouter from "./routes/course";
+import bookRouter from "./routes/book";
 
 db.sync()
   .then(() => {
@@ -27,21 +27,11 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-// app.use(
-//   cookieSession({
-//     name: "session",
-//     keys: [
-//       /* secret keys */
-//     ],
 
-//     // Cookie Options
-//     maxAge: 24 * 60 * 60 * 1000, // 24 hours
-//   })
-// );
 app.use(express.static(path.join("public")));
 
 app.use("/users", userRouter);
-app.use("/course", courseRouter);
+app.use("/book", bookRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

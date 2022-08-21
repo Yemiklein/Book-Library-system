@@ -10,7 +10,7 @@ const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const morgan_1 = __importDefault(require("morgan"));
 const database_config_1 = __importDefault(require("./config/database.config"));
 const user_1 = __importDefault(require("./routes/user"));
-const course_1 = __importDefault(require("./routes/course"));
+const book_1 = __importDefault(require("./routes/book"));
 database_config_1.default.sync()
     .then(() => {
     console.log("Database connected succcesfully");
@@ -26,19 +26,9 @@ app.use((0, morgan_1.default)("dev"));
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: false }));
 app.use((0, cookie_parser_1.default)());
-// app.use(
-//   cookieSession({
-//     name: "session",
-//     keys: [
-//       /* secret keys */
-//     ],
-//     // Cookie Options
-//     maxAge: 24 * 60 * 60 * 1000, // 24 hours
-//   })
-// );
 app.use(express_1.default.static(path_1.default.join("public")));
 app.use("/users", user_1.default);
-app.use("/course", course_1.default);
+app.use("/book", book_1.default);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     next((0, http_errors_1.default)(404));

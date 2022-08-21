@@ -1,6 +1,6 @@
 import { DataTypes, Model } from "sequelize";
 import db from "../config/database.config";
-import { CourseInstance } from "./course";
+import { bookInstance } from "./book";
 
 interface UsersAttributes {
   id: string;
@@ -103,6 +103,6 @@ UserInstance.init(
   }
 );
 
-UserInstance.hasMany(CourseInstance, { foreignKey: "userId", as: "course" });
+UserInstance.hasMany(bookInstance, { foreignKey: "userId", as: "book" });
 
-CourseInstance.belongsTo(UserInstance, { foreignKey: "userId", as: "user" });
+bookInstance.belongsTo(UserInstance, { foreignKey: "userId", as: "user" });

@@ -3,7 +3,7 @@
 
 <head>
 
-    <title>Felix Course Management System</title>
+    <title>Yemrad Book Management System</title>
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
@@ -52,12 +52,14 @@
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-nav-first">
                     <li><a href="#top" class="smoothScroll">Home</a></li>
-                    <li><a href="/users/login" class="smoothScroll">User Login</a></li>
-                    <li><a href="#courses" class="smoothScroll">View Courses Availbale</a></li>
+                    <li>
+                        <a href="/users/login" class="smoothScroll"> <i class="fa fa-sign-in" aria-hidden="true"></i>User Login</a>
+                    </li>
+                    <li><a href="#books" class="smoothScroll">View books Availbale</a></li>
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><i class="fa fa-phone"></i> +2348163660175</a></li>
+                    <li><a href="#"><i class="fa fa-phone"></i> +2348064248999</a></li>
                 </ul>
             </div>
 
@@ -74,8 +76,8 @@
                     <div class="caption">
                         <div class="container">
                             <div class="col-md-6 col-sm-12">
-                                <h1>XilefTem Education Center</h1>
-                                <h3>Our online courses are designed to fit in your industry supporting all-round with latest technologies.</h3>
+                                <h1>Yemrad Book Management Hub</h1>
+                                <h3>Our online books are designed to fit in your industry supporting all-round with latest technologies.</h3>
                                 <a href="#feature" class="section-btn btn btn-default smoothScroll">Discover more</a>
                             </div>
                         </div>
@@ -86,9 +88,9 @@
                     <div class="caption">
                         <div class="container">
                             <div class="col-md-6 col-sm-12">
-                                <h1>Start your journey with our online courses</h1>
-                                <h3>Our online courses are built in partnership with technology leaders and are designed to meet industry demands.</h3>
-                                <a href="#courses" class="section-btn btn btn-default smoothScroll">Take a course</a>
+                                <h1>Start your journey with our online books</h1>
+                                <h3>Our online books are built in partnership with technology leaders and are designed to meet industry demands.</h3>
+                                <a href="#books" class="section-btn btn btn-default smoothScroll">Take a book</a>
                             </div>
                         </div>
                     </div>
@@ -119,7 +121,7 @@
 
                 <div class="col-md-6 col-sm-12">
                     <div class="about-info">
-                        <h2>Start your journey to a better life with our online courses</h2>
+                        <h2>Start your journey to a better life with our online books</h2>
 
                         <figure>
                             <span><i class="fa fa-users"></i></span>
@@ -140,7 +142,7 @@
                         <figure>
                             <span><i class="fa fa-bar-chart-o"></i></span>
                             <figcaption>
-                                <h3>Free for 3 months</h3>
+                                <h3>No Subscription for first 3 Months </h3>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint ipsa voluptatibus.</p>
                             </figcaption>
                         </figure>
@@ -177,33 +179,33 @@
 
 
 
-    <!-- Courses -->
-    <section id="courses">
+    <!-- books -->
+    <section id="books">
         <div class="container">
             <div class="row">
 
                 <div class="col-md-12 col-sm-12">
                     <div class="section-title">
-                        <h2>View Courses Available <small>Upgrade your skills with our courses available</small></h2>
+                        <h2>View books Available <small>Upgrade your skills with our books available</small></h2>
                     </div>
 
-                    <div class="owl-carousel owl-theme owl-courses">
+                    <div class="owl-carousel owl-theme owl-books">
                         <!--  start  -->
                         <% for (let element of record) {%>
                             <div class="col-md-4 col-sm-4">
                                 <div class="item">
-                                    <div class="courses-thumb">
-                                        <div class="courses-top">
-                                            <div class="courses-image">
+                                    <div class="books-thumb">
+                                        <div class="books-top">
+                                            <div class="books-image">
                                                 <img src="<%=element.image%>" class="img-responsive" style="width:100%;height:200px;" alt="">
                                             </div>
-                                            <div class="courses-date">
+                                            <div class="books-date">
                                                 <span><i class="fa fa-calendar"></i> <%= (new Date(element.createdAt)).toString()%></span>
                                                 <span><i class="fa fa-clock-o"></i> 7 Hours</span>
                                             </div>
                                         </div>
 
-                                        <div class="courses-detail">
+                                        <div class="books-detail">
                                             <h3>
                                                 <a href="#">
                                                     <%=element.title%>
@@ -214,16 +216,16 @@
                                             </p>
                                         </div>
 
-                                        <div class="courses-info">
-                                            <div class="courses-author">
+                                        <div class="books-info">
+                                            <div class="books-author">
                                                 <img src="/images/author-image1.jpg" class="img-responsive" alt="">
                                                 <span><%=`${element.user.firstname}  ${element.user.lastname}`%></span>
                                                 <span></p> Mobile No: <%=element.user.phonenumber%></span>
                                                 <span></p> email: <%=element.user.email%></span>
 
                                             </div>
-                                            <div class="courses-price">
-                                                <a href="#"><span>Course Price:<%=`${element.price} NGN`%></span></a>
+                                            <div class="books-price">
+                                                <a href="#"><span>book Price:<%=`${element.price} NGN`%></span></a>
                                             </div>
                                         </div>
                                     </div>
@@ -250,10 +252,10 @@
                 <div class="col-md-4 col-sm-6">
                     <div class="footer-info">
                         <div class="section-title">
-                            <h2>Headquarter</h2>
+                            <h2>Office Address</h2>
                         </div>
                         <address>
-                                   <p>Road 4, Plot 14<br> Obele Estate, Akure</p>
+                                   <p>Road 4, Plot 14<br> Dolphin Estate, Ikoyi</p>
                               </address>
                     </div>
                 </div>
@@ -265,7 +267,7 @@
                             <br>
                             <br>
                             <br>
-                            <h2>Copyright &copy; 2022 Em-i Teknicals</h2>
+                            <h2>Copyright &copy;2022 Yemrad Concept</h2>
 
                         </div>
                     </div>
@@ -276,8 +278,8 @@
                             <h2>Contact Info</h2>
                         </div>
                         <address>
-                                   <p><a href="tel:+2348163660175">+2348163660175</a></p>
-                                   <p><a href="mailto:youremail.co">felixtemikotan@yahoo.com</a></p>
+                                   <p><a href="tel:+2348064248999">+2348064248999</a></p>
+                                   <p><a href="mailto:youremail.co">yemiklein77@gmail.com</a></p>
                               </address>
 
 

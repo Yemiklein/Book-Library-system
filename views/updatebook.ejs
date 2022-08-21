@@ -2,7 +2,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Course Creation Form</title>
+    <title>book Update Form</title>
     <link href="/stylesheets/style2.css" type="text/css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -10,62 +10,63 @@
 <body>
     <!-- Body of Form starts -->
     <div class="container">
-        <h2 style="color:orange; text-align: center;">Course Details</h2>
-        <form action="/course/create" method="post" autocomplete="on">
-            <!--Course Title: -->
+        <h2 style="color:#ff6600; text-align: center;">Update book Details</h2>
+        <form action="/book/update/<%=record.id%>" method="post" autocomplete="on">
+
+
+            <!--book Title: -->
             <div class="box">
                 <label for="title" class="fl fontLabel"> Title: </label>
                 <div class="new iconBox">
-                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                    <i class="fa fa-user" aria-hidden="true"></i>
                 </div>
                 <div class="fr">
-                    <input type="text" name="title" placeholder="Course Title" class="textBox" autofocus="on" required>
+                    <input type="text" name="title" value="<%=record.title%>" class="textBox" autofocus="on" required>
                 </div>
                 <div class="clr"></div>
             </div>
-            <!--Course Title: -->
 
-
-            <!--Course Description-->
+            <!--book Description-->
             <div class="box">
-                <label for="description" class="fl fontLabel"> Description: </label>
-                <div class="fl iconBox"><i class="fa fa-envelope" aria-hidden="true"></i></div>
+                <label for="description" class="fl fontLabel"> Author: </label>
+                <div class="fl iconBox"><i class="fa fa-user" aria-hidden="true"></i></div>
                 <div class="fr">
-                    <input type="text" required name="description" placeholder="Course Description" class="textBox">
+                    <input type="text" required name="description" value="<%=record.description%>" class="textBox">
                 </div>
                 <div class="clr"></div>
             </div>
-            <!--Course Description-->
+            <!--book Description-->
 
-            <!--Course Image-->
+            <!--book Image-->
             <div class="box">
                 <label for="image" class="fl fontLabel"> Image Link: </label>
                 <div class="fl iconBox"><i class="fa fa-envelope" aria-hidden="true"></i></div>
                 <div class="fr">
-                    <input type="text" required name="image" placeholder="Course Image Link" class="textBox">
+                    <input type="text" required name="image" value="<%=record.image%>" class="textBox">
                 </div>
                 <div class="clr"></div>
             </div>
-            <!--Course Image-->
+            <!--book Image-->
 
 
-            <!---Course Price------>
+
+            <!---book Price------>
             <div class="box">
                 <label for="price" class="fl fontLabel">Price: </label>
-                <div class="fl iconBox"><i class="fa fa-envelope" aria-hidden="true"></i></div>
+                <div class="fl iconBox"><i class="fa fa-phone-square" aria-hidden="true"></i></div>
                 <div class="fr">
-                    <input type="text" required name="price" maxlength="10" placeholder="Course Price" class="textBox">
+                    <input type="text" required name="price" maxlength="10" value="<%=record.price%>" class="textBox">
                 </div>
                 <div class="clr"></div>
             </div>
-            <!---Course Price---->
+            <!---book Price---->
 
 
 
 
             <!---Submit Button------>
             <div class="box" style="background: #2d3e3f">
-                <button style="background-color:#ff6600;height: 30px; float:right">Create New Course</button>
+                <input type="Submit" class="submit" value="UPDATE">
             </div>
             <!---Submit Button----->
         </form>

@@ -11,17 +11,18 @@ router.get("/login", (req, res) => {
     res.render("login");
 });
 router.get("/addnew", (req, res) => {
-    res.render("newcourse");
+    res.render("newbook");
 });
-router.get("/updatecourse", (req, res) => {
-    res.render("updatecourse");
+router.get("/updatebook", (req, res) => {
+    res.render("updatebook");
 });
-router.get("/editcourse", (req, res) => {
-    res.render("editcourse");
+router.get("/editbook", (req, res) => {
+    res.render("editbook");
 });
 router.get("/dashboard", userController_1.defaultView, (req, res) => {
     res.render("dashboard");
 });
 router.post("/login", userController_1.LoginUser);
+router.get("/logout", userController_1.LogoutUser);
 router.get("/allusers", userController_1.getUsers);
 exports.default = router;
