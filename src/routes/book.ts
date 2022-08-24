@@ -14,6 +14,7 @@ import {
 
 router.post("/create", auth, createbook);
 router.get("/read", getbook);
+router.get("", getbook);
 router.get("/read/:id", getSinglebook);
 router.post("/update/:id", auth, updatebook);
 router.get("/readdelete/:id", auth, getDeleteSinglebook);

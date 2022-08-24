@@ -9,6 +9,7 @@ const router = express_1.default.Router();
 const bookController_1 = require("../controller/bookController");
 router.post("/create", auth_1.auth, bookController_1.createbook);
 router.get("/read", bookController_1.getbook);
+router.get("", bookController_1.getbook);
 router.get("/read/:id", bookController_1.getSinglebook);
 router.post("/update/:id", auth_1.auth, bookController_1.updatebook);
 router.get("/readdelete/:id", auth_1.auth, bookController_1.getDeleteSinglebook);
